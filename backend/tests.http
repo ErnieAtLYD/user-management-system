@@ -1,0 +1,46 @@
+GET http://localhost:5500/api/v1/users
+
+###
+
+GET http://localhost:5500/api/v1/users/2
+
+###
+
+GET http://localhost:5500/api/v1/users/fail
+
+###
+
+POST http://localhost:5500/api/v1/users
+Content-Type: application/json
+
+{
+    "first_name": "Armando",
+    "last_name": "Pérez",
+    "email": "armando@instock.com"
+}
+
+###
+
+DELETE http://localhost:5500/api/v1/users/11
+
+###
+
+DELETE http://localhost:5500/api/v1/users/fail
+
+###
+
+PUT http://localhost:5500/api/v1/users/12
+Content-Type: application/json
+
+{
+    "email": "pitbull@pitbull.com"
+}
+
+###
+
+PUT http://localhost:5500/api/v1/users/999
+Content-Type: application/json
+
+{
+    "email": "pitbull@pitbull.com"
+}
