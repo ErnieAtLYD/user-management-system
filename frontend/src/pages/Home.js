@@ -44,9 +44,13 @@ const Home = () => {
                     <Link to={`/user/${user.id}/edit`} role='button'>
                       Edit
                     </Link>
-                    <a className='secondary outline' role='button'>
+                    <Link
+                      to={`/user/${user.id}/delete`}
+                      className='secondary outline'
+                      role='button'
+                    >
                       Delete
-                    </a>
+                    </Link>
                   </td>
                 </tr>
               ))
