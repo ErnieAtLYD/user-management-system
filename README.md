@@ -18,6 +18,7 @@ NOTE: Using [PicoCSS](https://picocss.com/), a minimal CSS framework for semanti
   - `npm run db:migrate`
   - `npm run db:seed`
 - `cd frontend`
+  - Edit `/frontend/.env` as needed if you're using a different localhost server URL
   - `npm install`
 
 ## DB Schema (`user_management_system`)
