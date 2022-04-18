@@ -86,7 +86,6 @@ const EditUser = () => {
               placeholder='Avatar URL'
               value={user.avatar}
               onChange={handleChange}
-              required
             />
 
             <button type='submit'>Edit User</button>
