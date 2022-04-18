@@ -11,7 +11,8 @@ const Home = () => {
       .get(process.env.REACT_APP_SERVER_URL + '/api/v1/users')
       .then((resp) => {
         setUserList(resp.data);
-      });
+      })
+      .catch((e) => {});
   }, []);
 
   return (
@@ -55,7 +56,9 @@ const Home = () => {
           </tbody>
         </table>
 
-        <button>Add a user</button>
+        <Link to='user/add' style={{ width: '100%' }} role='button'>
+          Add a user
+        </Link>
       </main>
     </div>
   );
