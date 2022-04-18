@@ -1,19 +1,19 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 
 const EditUser = () => {
   const [user, setUser] = useState();
   const { userId } = useParams();
+  const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_SERVER_URL + '/api/v1/users/' + userId;
 
   useEffect(() => {
     console.log({ userId });
-    axios
-      .get(process.env.REACT_APP_SERVER_URL + '/api/v1/users/' + userId)
-      .then((resp) => {
-        setUser(resp.data);
-      });
+    axios.get(API_URL).then((resp) => {
+      setUser(resp.data);
+    });
   }, [userId]);
 
   const handleChange = (event) => {
@@ -23,7 +23,15 @@ const EditUser = () => {
     setUser({ ...user, [name]: value });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .put(API_URL, user)
+      .then((resp) => {
+        navigate('/');
+      })
+      .catch((e) => {});
+  };
 
   return (
     <>
