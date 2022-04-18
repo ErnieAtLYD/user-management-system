@@ -2,7 +2,10 @@
 
 A simple user management system based on concepts taught at BST.
 
+- Frontend: Create React App
 - Backend: Node, MySQL, ExpressJS, knex
+
+NOTE: Using [PicoCSS](https://picocss.com/), a minimal CSS framework for semantic HTML
 
 ## Installation instructions
 
