@@ -11,7 +11,6 @@ const AddUser = () => {
     avatar: '',
   });
   const navigate = useNavigate();
-  const API_URL = process.env.REACT_APP_SERVER_URL + '/api/v1/users/';
 
   const handleChange = (event) => {
     const target = event.target;
@@ -23,7 +22,7 @@ const AddUser = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post(API_URL, user)
+      .post(process.env.REACT_APP_SERVER_URL + '/api/v1/users/', user)
       .then((resp) => {
         navigate('/');
       })
