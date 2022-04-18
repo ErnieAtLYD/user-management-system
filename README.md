@@ -9,6 +9,7 @@ NOTE: Using [PicoCSS](https://picocss.com/), a minimal CSS framework for semanti
 
 ## Installation instructions
 
+- `npm install`
 - create DB on MySQL
   - `CREATE DATABASE user_management_system;`
 - edit `knexfile.js` with local DB user, password, and DB name
@@ -16,7 +17,8 @@ NOTE: Using [PicoCSS](https://picocss.com/), a minimal CSS framework for semanti
   - `npm install`
   - `npm run db:migrate`
   - `npm run db:seed`
-  - `npm run start`
+- `cd frontend`
+  - `npm install`
 
 ## DB Schema (`user_management_system`)
 
