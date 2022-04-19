@@ -25,6 +25,16 @@ NOTE: Using [PicoCSS](https://picocss.com/), a minimal CSS framework for semanti
 
 ### users
 
+| name         | type       | nullable | notes |
+| ------------ | ---------- | -------- | ----- |
+| id           | int()      | `false`  |       |
+| first_name   | string     | `false`  |       |
+| last_name    | string     | `false`  |       |
+| email        | string     | `false`  |       |
+| avatar       | string     | `true`   |       |
+| last_created | datetime() |          |       |
+| last_updated | datetime() |          |       |
+
 ## API Endpoints
 
 - GET: `/api/v1/users`
