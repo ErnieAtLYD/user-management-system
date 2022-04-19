@@ -1,0 +1,16 @@
+{
+  "name": "user-management-system",
+  "version": "1.0.0",
+  "description": "A simple user management system based on concepts taught at BST.",
+  "main": "backend/app.js",
+  "scripts": {
+    "server:dev": "cd backend && npm run start",
+    "client": "cd frontend && npm run start",
+    "dev": "concurrently --kill-others \"npm run server:dev\" \"npm run client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.1.0"
+  }
+}
