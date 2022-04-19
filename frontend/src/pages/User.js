@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Header from '../components/Header';
 
 const User = () => {
   const [user, setUser] = useState();
@@ -17,7 +16,6 @@ const User = () => {
   }, [userId]);
   return (
     <>
-      <Header />
       <main className='container'>
         {user ? (
           <>

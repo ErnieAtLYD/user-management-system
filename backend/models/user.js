@@ -3,6 +3,9 @@ const tableName = 'users';
 
 const findAll = () => db(tableName).select();
 
+// Use this for login
+const findOne = (filters) => db(tableName).where(filters).first();
+
 const findById = (id) => db(tableName).where({ id }).first();
 
 const remove = (id) => db(tableName).where({ id }).del();
@@ -25,6 +28,7 @@ const create = (body) => {
 };
 
 module.exports = {
+  findOne,
   findAll,
   findById,
   remove,

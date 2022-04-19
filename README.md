@@ -14,6 +14,8 @@ NOTE: Using [PicoCSS](https://picocss.com/), a minimal CSS framework for semanti
   - `CREATE DATABASE user_management_system;`
 - edit `knexfile.js` with local DB user, password, and DB name
 - `cd backend`
+  - `cp .env.sample .env`
+    - Customize your `JWT_SECRET` value
   - `npm install`
   - `npm run db:migrate`
   - `npm run db:seed`
@@ -40,8 +42,15 @@ NOTE: Using [PicoCSS](https://picocss.com/), a minimal CSS framework for semanti
 
 ## API Endpoints
 
+- GET `/api/v1/users/login`
+- GET: `/api/v1/users/current` (auth required)
+
 - GET: `/api/v1/users`
 - POST: `/api/v1/users`
 - GET: `/api/v1/users/:user_id`
 - PUT: `/api/v1/users/:user_id`
 - DELETE: `/api/v1/users/:user_id`
+
+Resources
+
+- [JWT authentication with Node.js and React](https://towardsdev.com/jwt-authentication-with-node-js-and-react-dc41ef0e6136)

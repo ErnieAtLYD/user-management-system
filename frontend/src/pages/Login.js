@@ -1,12 +1,16 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
+import FormInput from '../components/FormInput';
 
 const Login = () => {
   const [user, setUser] = useState({});
+  const [hasFailedAuth, setFailedAuth] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccessful, setIsSuccessful] = useState(false);
+
   const navigate = useNavigate();
-  const API_URL = process.env.REACT_APP_SERVER_URL + '/api/v1/users/';
+  const API_URL = process.env.REACT_APP_SERVER_URL + '/api/v1/users/login';
 
   const handleChange = (event) => {
     const target = event.target;
@@ -18,42 +22,44 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .put(API_URL, user)
+      .post(API_URL, user)
       .then((resp) => {
+        sessionStorage.setItem('token', resp.data.token);
+        setIsSuccessful(true);
+        setIsLoading(false);
         navigate('/');
       })
-      .catch((e) => {});
+      .catch((e) => {
+        setFailedAuth(true);
+        setIsLoading(false);
+      });
   };
 
   return (
     <>
-      <Header />
       <main className='container'>
         <h1>Login</h1>
+
+        {hasFailedAuth && <div className='err'>ERROR!</div>}
 
         <form
           style={{ margin: '0 auto', maxWidth: '25rem' }}
           onSubmit={handleSubmit}
         >
-          <label htmlFor='username'>Username</label>
-          <input
-            type='username'
-            id='username'
+          <FormInput
             name='username'
-            placeholder='Username'
-            value={user.username}
+            defaultVal={user.username}
+            label='Username'
             onChange={handleChange}
-            required
+            required={true}
           />
-          <label htmlFor='password'>Password</label>
-          <input
-            type='password'
-            id='password'
+          <FormInput
             name='password'
-            placeholder='Password'
-            value={user.password}
+            type='password'
+            defaultVal={user.password}
+            label='Password'
             onChange={handleChange}
-            required
+            required={true}
           />
 
           <button type='submit'>Login</button>

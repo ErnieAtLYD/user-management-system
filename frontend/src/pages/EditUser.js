@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
 
 const EditUser = () => {
   const [user, setUser] = useState();
@@ -35,7 +34,6 @@ const EditUser = () => {
 
   return (
     <>
-      <Header />
       <main className='container'>
         <h1>Edit User</h1>
 

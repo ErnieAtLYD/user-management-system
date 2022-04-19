@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
 
 const AddUser = () => {
   const [user, setUser] = useState({
@@ -31,7 +30,6 @@ const AddUser = () => {
 
   return (
     <>
-      <Header />
       <main className='container'>
         <h1>Add User</h1>
         <form onSubmit={handleSubmit}>

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import Header from '../components/Header';
 import { Link } from 'react-router-dom';
 import UserTable from '../components/UserTable';
 
@@ -18,7 +17,6 @@ const Home = () => {
 
   return (
     <div>
-      <Header />
       <main className='container'>
         <h1>User List</h1>
         <UserTable userList={userList} />
