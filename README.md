@@ -1,4 +1,4 @@
-# Simple CRUD Management System
+# Simple User Management System
 
 A simple user management system based on concepts taught at BST.
 
