@@ -5,9 +5,9 @@ module.exports = {
     client: 'mysql',
     connection: {
       host: '127.0.0.1',
-      database: 'user_management_system',
+      database: 'crud_management_system',
       user: 'root',
-      password: 'november17',
+      password: 'password',
     },
   },
 

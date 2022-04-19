@@ -1,6 +1,8 @@
-# Simple User Management System
+# Simple CRUD Management System
 
-A simple user management system based on concepts taught at BST.
+A simple management system that handles CRUD based on concepts taught at BST.
+
+NOTE: This does NOT handle user logins or registrations. We use the concept as "users" as a resource example, but this can be swapped out with any resource as appropriate.
 
 - Frontend: axios, React: Create React App, React Router
 - Backend: Node, MySQL, ExpressJS, knex
@@ -11,7 +13,7 @@ NOTE: Using [PicoCSS](https://picocss.com/), a minimal CSS framework for semanti
 
 - `npm install`
 - create DB on MySQL
-  - `CREATE DATABASE user_management_system;`
+  - `CREATE DATABASE crud_management_system;`
 - edit `knexfile.js` with local DB user, password, and DB name
 - `cd backend`
   - `npm install`
@@ -21,7 +23,7 @@ NOTE: Using [PicoCSS](https://picocss.com/), a minimal CSS framework for semanti
   - Edit `/frontend/.env` as needed if you're using a different localhost server URL
   - `npm install`
 
-## DB Schema (`user_management_system`)
+## DB Schema (`crud_management_system`)
 
 ### users
 

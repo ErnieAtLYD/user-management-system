@@ -3,7 +3,7 @@ const Header = () => (
     <nav>
       <ul>
         <li>
-          <strong>User Management System</strong>
+          <strong>CRUD Management System</strong>
         </li>
       </ul>
       {/* <ul>
