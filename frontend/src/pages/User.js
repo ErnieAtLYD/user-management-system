@@ -8,7 +8,6 @@ const User = () => {
   const { userId } = useParams();
 
   useEffect(() => {
-    console.log({ userId });
     axios
       .get(process.env.REACT_APP_SERVER_URL + '/api/v1/users/' + userId)
       .then((resp) => {
