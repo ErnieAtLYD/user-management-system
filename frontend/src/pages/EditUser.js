@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import FormInput from '../components/FormInput';
 
 const EditUser = () => {
   const [user, setUser] = useState();
@@ -40,52 +41,36 @@ const EditUser = () => {
         {user ? (
           <form onSubmit={handleSubmit}>
             <div className='grid'>
-              <label htmlFor='first_name'>
-                First name
-                <input
-                  type='text'
-                  id='first_name'
-                  name='first_name'
-                  placeholder='First name'
-                  value={user.first_name}
-                  onChange={handleChange}
-                  required
-                />
-              </label>
-
-              <label htmlFor='last_name'>
-                Last name
-                <input
-                  type='text'
-                  id='last_name'
-                  name='last_name'
-                  placeholder='Last name'
-                  value={user.last_name}
-                  onChange={handleChange}
-                  required
-                />
-              </label>
+              <FormInput
+                name='first_name'
+                defaultVal={user.first_name}
+                label='First name'
+                onChange={handleChange}
+                required={true}
+              />
+              <FormInput
+                name='last_name'
+                defaultVal={user.last_name}
+                label='Last name'
+                onChange={handleChange}
+                required={true}
+              />
             </div>
-            <label htmlFor='email'>Email address</label>
-            <input
-              type='email'
-              id='email'
+            <FormInput
               name='email'
-              placeholder='Email address'
-              value={user.email}
+              type='email'
+              defaultVal={user.email}
+              label='Email address'
               onChange={handleChange}
-              required
+              required={true}
             />
-            <label htmlFor='avatar'>Avatar</label>
-            <input
-              type='avatar'
-              id='avatar'
+            <FormInput
               name='avatar'
-              placeholder='Avatar URL'
-              value={user.avatar}
+              type='avatar'
+              defaultVal={user.avatar}
+              label='Avatar URL'
               onChange={handleChange}
             />
-
             <button type='submit'>Edit User</button>
           </form>
         ) : (

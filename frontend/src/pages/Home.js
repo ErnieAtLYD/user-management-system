@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import UserTable from '../components/UserTable';
 
-const Home = () => {
+const Home = ({ loggedInUser }) => {
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
@@ -19,11 +19,13 @@ const Home = () => {
     <div>
       <main className='container'>
         <h1>User List</h1>
-        <UserTable userList={userList} />
+        <UserTable userList={userList} loggedInUser={loggedInUser} />
 
-        <Link to='user/add' style={{ width: '100%' }} role='button'>
-          Add a user
-        </Link>
+        {loggedInUser && (
+          <Link to='user/add' style={{ width: '100%' }} role='button'>
+            Add a user
+          </Link>
+        )}
       </main>
     </div>
   );
