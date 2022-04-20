@@ -21,7 +21,7 @@ NOTE: Using [PicoCSS](https://picocss.com/), a minimal CSS framework for semanti
   - `npm run db:seed`
     - This will create three sample users, `user01`, `user02`, `user03`, with the password of `password`. This is for learning purposes so don't put this on production, obviously.
 - `cd frontend`
-  - Edit `/frontend/.env` as needed if you're using a different localhost server URL
+  - `cp .env.sample .env` and edit as needed
   - `npm install`
 
 ## DB Schema (`user_management_system`)
