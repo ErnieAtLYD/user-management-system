@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 const Header = ({ user, hasFailedAuth }) => {
   const navigate = useNavigate();
@@ -11,7 +11,9 @@ const Header = ({ user, hasFailedAuth }) => {
       <nav>
         <ul>
           <li>
-            <strong>User Management System</strong>
+            <NavLink to='/'>
+              <strong>User Management System</strong>
+            </NavLink>
           </li>
         </ul>
         <ul>
@@ -22,12 +24,18 @@ const Header = ({ user, hasFailedAuth }) => {
                 Welcome, <strong>{user.username}</strong>
               </li>
               <li>
+                <Link to='protected'>Protected Page</Link>
+              </li>
+              <li>
                 <button onClick={onLogout}>Logout</button>
               </li>
             </>
           ) : (
             <>
               {/* Show logged out navigation bar  */}
+              <li>
+                <Link to='protected'>Protected Page</Link>
+              </li>
               <li>
                 <Link to='/login'>Login</Link>
               </li>

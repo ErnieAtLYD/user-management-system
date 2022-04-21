@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const UserTable = ({ userList }) => {
+const UserTable = ({ userList, loggedInUser }) => {
   return (
     <table role='grid'>
       <thead>
@@ -8,7 +8,7 @@ const UserTable = ({ userList }) => {
           <th scope='col'>ID</th>
           <th scope='col'>Name</th>
           <th scope='col'>Email</th>
-          <th scope='col'>Actions</th>
+          {loggedInUser && <th scope='col'>Actions</th>}
         </tr>
       </thead>
       <tbody>
@@ -22,18 +22,20 @@ const UserTable = ({ userList }) => {
                 </Link>
               </td>
               <td>{user.email}</td>
-              <td>
-                <Link to={`/user/${user.id}/edit`} role='button'>
-                  Edit
-                </Link>
-                <Link
-                  to={`/user/${user.id}/delete`}
-                  className='secondary outline'
-                  role='button'
-                >
-                  Delete
-                </Link>
-              </td>
+              {loggedInUser && (
+                <td>
+                  <Link to={`/user/${user.id}/edit`} role='button'>
+                    Edit
+                  </Link>
+                  <Link
+                    to={`/user/${user.id}/delete`}
+                    className='secondary outline'
+                    role='button'
+                  >
+                    Delete
+                  </Link>
+                </td>
+              )}
             </tr>
           ))
         ) : (

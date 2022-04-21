@@ -9,6 +9,8 @@ import AddUser from './pages/AddUser';
 import DeleteUser from './pages/DeleteUser';
 import Login from './pages/Login';
 import Header from './components/Header';
+import Protected from './pages/Protected';
+import AuthRequired from './components/AuthRequired';
 
 /**
  * The component will have the following states:
@@ -50,10 +52,39 @@ function App() {
       <Routes>
         <Route path='/' element={<Home loggedInUser={user} />} />
         <Route path='login' element={<Login />} />
-        <Route path='user/add' element={<AddUser />} />
+        <Route
+          path='protected'
+          element={
+            <AuthRequired>
+              <Protected />
+            </AuthRequired>
+          }
+        />
+        <Route
+          path='user/add'
+          element={
+            <AuthRequired>
+              <AddUser />
+            </AuthRequired>
+          }
+        />
         <Route path='user/:userId' element={<User />} />
-        <Route path='user/:userId/edit' element={<EditUser />} />
-        <Route path='user/:userId/delete' element={<DeleteUser />} />
+        <Route
+          path='user/:userId/edit'
+          element={
+            <AuthRequired>
+              <EditUser />
+            </AuthRequired>
+          }
+        />
+        <Route
+          path='user/:userId/delete'
+          element={
+            <AuthRequired>
+              <DeleteUser />
+            </AuthRequired>
+          }
+        />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
