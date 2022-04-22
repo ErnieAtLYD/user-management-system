@@ -1,11 +1,6 @@
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
-const Header = ({ user, hasFailedAuth }) => {
-  const navigate = useNavigate();
-  const onLogout = () => {
-    sessionStorage.removeItem('token');
-    navigate('/');
-  };
+const Header = ({ user }) => {
   return (
     <header className='container'>
       <nav>
@@ -27,7 +22,7 @@ const Header = ({ user, hasFailedAuth }) => {
                 <Link to='protected'>Protected Page</Link>
               </li>
               <li>
-                <button onClick={onLogout}>Logout</button>
+                <Link to='/logout'>Logout</Link>
               </li>
             </>
           ) : (

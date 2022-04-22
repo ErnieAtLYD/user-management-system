@@ -11,47 +11,50 @@ import Login from './pages/Login';
 import Header from './components/Header';
 import Protected from './pages/Protected';
 import AuthRequired from './components/AuthRequired';
+import Logout from './pages/Logout';
 
 /**
  * The component will have the following states:
  * - user (default: null)
- * - hasFailedAuth (default: false)
  *
  * STRATEGY
  * Run this immediately:
  * 1. Is there a sessionStorage item named "token"?
- *    - no? well, that was easy; they're not logged in. We're done - set hasFailedAuth to true.
+ *    - no? well, that was easy; they're not logged in. Done.
  *    - If so, we'll have to continue.
  * 2. We're going to call /api/v1/users/current.
  */
 function App() {
-  const [user, setUser] = useState(null); // the current user logged in
-  const [hasFailedAuth, setFailedAuth] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState(null); // the current user logged in
   const API_URL = process.env.REACT_APP_SERVER_URL + '/api/v1/users/current';
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
     if (!token) {
-      return setFailedAuth(true);
+      return;
     }
+    const authHeader = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
     axios
-      .get(API_URL, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      .get(API_URL, authHeader)
       .then((response) => {
-        setUser(response.data);
+        setLoggedInUser(response.data);
       })
       .catch((err) => {
-        setFailedAuth(true);
+        console.error(err);
       });
-  }, []);
+  });
 
   return (
     <BrowserRouter>
-      <Header user={user} hasFailedAuth={hasFailedAuth} />
+      <Header user={loggedInUser} />
       <Routes>
-        <Route path='/' element={<Home loggedInUser={user} />} />
-        <Route path='login' element={<Login />} />
+        <Route path='/' element={<Home loggedInUser={loggedInUser} />} />
+        <Route
+          path='login'
+          element={<Login setLoggedInUser={setLoggedInUser} />}
+        />
         <Route
           path='protected'
           element={
@@ -84,6 +87,10 @@ function App() {
               <DeleteUser />
             </AuthRequired>
           }
+        />
+        <Route
+          path='logout'
+          element={<Logout setLoggedInUser={setLoggedInUser} />}
         />
         <Route path='*' element={<NotFound />} />
       </Routes>
