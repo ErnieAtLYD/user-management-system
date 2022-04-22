@@ -1,12 +1,14 @@
 import { Navigate, useLocation } from 'react-router-dom';
 
-// The idea is to redirect the user to the login page if they are not logged in;
-// by wrapping multiple page components you can leave the authentication logic
-// out of the page components themselves.
+// Redirect the user to the login page if they are not logged in;
+// by wrapping multiple page components you can leave the business logic
+// out of the page components.
 
-const AuthRequired = ({ loggedInUser, children }) => {
+const AuthRequired = ({ children }) => {
+  const token = sessionStorage.getItem('token');
   const location = useLocation();
-  if (!loggedInUser) {
+
+  if (!token) {
     // more about location state:
     // https://reactrouter.com/docs/en/v6/getting-started/concepts#location-state
 
