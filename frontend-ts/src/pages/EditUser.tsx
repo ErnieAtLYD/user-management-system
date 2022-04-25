@@ -2,9 +2,10 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
+import { IUser } from '../utils/interfaces';
 
 const EditUser = () => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState<IUser>({} as IUser);
   const { userId } = useParams();
   const navigate = useNavigate();
   const API_URL = process.env.REACT_APP_SERVER_URL + '/api/v1/users/' + userId;
@@ -15,14 +16,14 @@ const EditUser = () => {
     });
   }, [API_URL, userId]);
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const target = event.target;
     const name = target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     setUser({ ...user, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     axios
       .put(API_URL, user)
@@ -48,7 +49,7 @@ const EditUser = () => {
                   id='first_name'
                   name='first_name'
                   placeholder='First name'
-                  value={user.first_name}
+                  value={user.first_name || ''}
                   onChange={handleChange}
                   required
                 />
@@ -61,7 +62,7 @@ const EditUser = () => {
                   id='last_name'
                   name='last_name'
                   placeholder='Last name'
-                  value={user.last_name}
+                  value={user.last_name || ''}
                   onChange={handleChange}
                   required
                 />
@@ -73,7 +74,7 @@ const EditUser = () => {
               id='email'
               name='email'
               placeholder='Email address'
-              value={user.email}
+              value={user.email || ''}
               onChange={handleChange}
               required
             />
@@ -83,7 +84,7 @@ const EditUser = () => {
               id='avatar'
               name='avatar'
               placeholder='Avatar URL'
-              value={user.avatar}
+              value={user.avatar || ''}
               onChange={handleChange}
             />
 

@@ -5,8 +5,11 @@
   "main": "backend/app.js",
   "scripts": {
     "server:dev": "cd backend && npm run start",
+    "server-ts:dev": "cd backend-ts && npm run start",
     "client": "cd frontend && npm run start",
-    "dev": "concurrently --kill-others \"npm run server:dev\" \"npm run client\""
+    "client-ts": "cd frontend-ts && npm run start",
+    "dev": "concurrently --kill-others \"npm run server:dev\" \"npm run client\"",
+    "dev-ts": "concurrently --kill-others \"npm run server-ts:dev\" \"npm run client-ts\""
   },
   "author": "",
   "license": "ISC",
