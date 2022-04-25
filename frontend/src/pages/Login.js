@@ -3,11 +3,9 @@ import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import FormInput from '../components/FormInput';
 
-const Login = () => {
+const Login = ({ setLoggedInUser }) => {
   const [user, setUser] = useState({});
   const [hasFailedAuth, setFailedAuth] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccessful, setIsSuccessful] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -27,8 +25,7 @@ const Login = () => {
       .post(API_URL, user)
       .then((resp) => {
         sessionStorage.setItem('token', resp.data.token);
-        setIsSuccessful(true);
-        setIsLoading(false);
+        setLoggedInUser(resp.data.user);
 
         // Send them back to the page they tried to visit when they were
         // redirected to the login page. Use { replace: true } so we don't create
@@ -40,7 +37,6 @@ const Login = () => {
       })
       .catch((e) => {
         setFailedAuth(true);
-        setIsLoading(false);
       });
   };
 
